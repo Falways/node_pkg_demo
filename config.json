@@ -1,0 +1,22 @@
+{
+  "post_data": {
+    "status":"success",
+    "code":"1000",
+    "message":"执行成功",
+    "data":
+    {
+      "ip":"192.168.18.188",
+      "devOnlyId":"test123",
+      "score":"62",
+      "clientTime ":"2019-12-11 18:2:39",
+      "deviceType":"0",
+      "vmClientIp":"null"
+    }
+  },
+  "server_addr": " http://192.168.128.155:10092/api/v1/setRiskValue",
+  "monitor_files": {
+    "C:\\Windows\\System32\\drivers\\etc\\hosts": 50,
+    "C:\\Windows\\System32\\drivers\\etc\\services": 40,
+    "C:\\Windows\\System32\\drivers\\etc\\networks" : 30
+  }
+}

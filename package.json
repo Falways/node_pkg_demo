@@ -1,0 +1,16 @@
+{
+  "name": "six_eyes",
+  "version": "1.0.0",
+  "bin": "./main.js",
+  "private": true,
+  "scripts": {
+    "pkg": "pkg . -t  node10-win-x64 -o app"
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "pkg": "^4.4.9"
+  }
+}
