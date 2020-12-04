@@ -57,7 +57,7 @@ const watchFile = (fp, data, score)=>{
 }
 try {
     logger.info("Build by pkg at 2020/12/4 14:00!")
-	// 在pkg中使用__dirname获取的snapshoot(快照)路径, __dirname要替换成process.cwd()
+    // 在pkg中使用__dirname获取的snapshoot(快照)路径, __dirname要替换成process.cwd()
     config = fs.readFileSync(path.resolve(process.cwd(), 'config.json')).toString()
     config = JSON.parse(config)
     let data = config.post_data
