@@ -19,10 +19,9 @@ Date.prototype.Format = function (fmt) { //author: meizz
     return fmt;
 }
 
-const logger = {
-    info: v=>console.log(`${new Date().Format("yyyy-MM-dd hh:mm:ss")} [INFO] ${JSON.stringify(v)}`),
-    error: v=>console.error(`${new Date().Format("yyyy-MM-dd hh:mm:ss")} [ERROR] ${JSON.stringify(v)}`)
-}
+let log4js = require("log4js");
+let logger = log4js.getLogger();
+logger.level = "debug";
 
 const postData = (url,data)=>{
     logger.info(`post url = ${url}`)
@@ -55,19 +54,63 @@ const watchFile = (fp, data, score)=>{
         }
     })
 }
-try {
-    logger.info("Build by pkg at 2020/12/4 14:00!")
-    // 在pkg中使用__dirname获取的snapshoot(快照)路径, __dirname要替换成process.cwd()
-    config = fs.readFileSync(path.resolve(process.cwd(), 'config.json')).toString()
-    config = JSON.parse(config)
-    let data = config.post_data
-    for (let key in config.monitor_files){
-        logger.info("start watch file: "+key)
-        watchFile(key, data, config.monitor_files[key])
-    }
-}catch (e){
-    logger.error(e)
+
+const pullServerSetWatchFile = (pull_server_addr, done)=>{
+    logger.info("download watch file config form: " +pull_server_addr)
+    request(pull_server_addr,{
+        method:"GET",
+        timeout: 5000,
+        json:true,
+        verifySSL: false
+    },(error, res, body)=>{
+        if (error){
+            logger.error(error)
+            done(null)
+        }else {
+            logger.info(JSON.stringify(body))
+            try {
+                let obj = {}
+                body.data.forEach(item=>{
+                    obj[item["fp"]]=item.score;
+                })
+                done(obj)
+            }catch (e){
+                logger.error(e)
+                done(null)
+            }
+        }
+    })
 }
+
+const startWorker = () =>{
+    try {
+        logger.info("Build by pkg at 2021/1/29 20:00!")
+        // 在pkg中使用__dirname获取的snapshoot(快照)路径, __dirname要替换成process.cwd()
+        config = fs.readFileSync("C:\\config.json").toString()
+        config = JSON.parse(config)
+        logger.info(config)
+        let data = config.post_data
+        pullServerSetWatchFile(config.service_config, function (mf){
+            if (!mf){
+                logger.error("connect server download config failure, abort!")
+                logger.info("process will exit, after 5s!")
+                setTimeout(()=>{
+                    process.exit(0)
+                },5000)
+                return
+            }
+            for (let key in mf){
+                logger.info("start watch file: "+key+", value")
+                watchFile(key, data, mf[key])
+            }
+        })
+    }catch (e){
+        logger.error(e)
+    }
+}
+
+startWorker()
+
 
 
 

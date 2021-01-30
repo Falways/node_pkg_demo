@@ -1,12 +1,14 @@
 {
   "name": "six_eyes",
   "version": "1.0.0",
-  "bin": "./app_http_server.js",
+  "bin": "./main.js",
   "private": true,
   "scripts": {
-    "pkg": "pkg . -t  linux -o app"
+    "pkg-linux": "pkg . -t  node12-linux-x64 -o app-server",
+    "pkg-windows": "pkg . -t  node12-win-x64 -o app"
   },
   "dependencies": {
+    "async": "^3.2.0",
     "express": "^4.17.1",
     "log4js": "^6.3.0",
     "morgan": "^1.10.0",

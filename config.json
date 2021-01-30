@@ -13,10 +13,6 @@
       "vmClientIp":"null"
     }
   },
-  "server_addr": " http://192.168.128.155:10092/api/v1/setRiskValue",
-  "monitor_files": {
-    "C:\\Windows\\System32\\drivers\\etc\\hosts": 50,
-    "C:\\Windows\\System32\\drivers\\etc\\services": 40,
-    "C:\\Windows\\System32\\drivers\\etc\\networks" : 30
-  }
+  "server_addr": "http://192.168.128.155:10092/api/v1/setRiskValue",
+  "service_config": "http://192.168.128.155:3001/sdp_score_file"
 }
