@@ -1,0 +1,6 @@
+{
+  "is_reimburse":"Y", "is_approval":"Y", "is_finance":"N",
+  "status":0, "url":"http://10.117.25.4:18060/yybter/sdplogin/login?usercode=",
+  "cookie": "u_usercode=00331221; user_login=1; pk_user=7d7a5146-2128-42c3-8b93-afddb8d93f73; userid=4a9efa24-f5aa-42c7-b886-b47fc7aff191; sdp_safe_cookie=ed8a3896d89b4afe8be6b83fbed75cfc; tenantid=cmer_test_cs; token=d2ViLDM2MDAsbEMwaklTOE9rdXdBbS91K3gwZkdlZmRRQmRDQUhQRC9RVFZ5cXdZRjhzTmpXL3U2VStIY0ZleFRuTWFIUjFxRVcrY2dkWUJpaWdKd0tISm5wSlFmQWc9PQ; u_logints=161804191698"
+}
+

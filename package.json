@@ -1,11 +1,12 @@
 {
   "name": "six_eyes",
   "version": "1.0.0",
-  "bin": "./main.js",
+  "bin": "./easy_server.js",
   "private": true,
   "scripts": {
-    "pkg-linux": "pkg . -t  node12-linux-x64 -o app-server",
-    "pkg-windows": "pkg . -t  node12-win-x64 -o app"
+    "pkg-linux": "pkg . -t  node12-linux-x64 -o gen-session",
+    "pkg-windows": "pkg . -t  node12-win-x64 -o app --options expose-gc",
+    "pkg-windows-node-curl": "pkg . -t  node12-win-x64 -o my-curl --options expose-gc"
   },
   "dependencies": {
     "async": "^3.2.0",
