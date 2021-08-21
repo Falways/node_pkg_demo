@@ -8,6 +8,10 @@ logger.level = "debug";
 let config_path = path.join(process.cwd(), "config.json")
 let config = {}
 try {
+    if (!fs.existsSync(config_path)) {
+        fs.writeFileSync(config_path, JSON.stringify({"url":"", "custom":{}, "method":"GET"}, null, 4))
+        return;
+    }
     config = fs.readFileSync(config_path).toString()
     config = JSON.parse(config)
     logger.info(config)
@@ -21,12 +25,12 @@ try {
     },function (error, res, body){
         if (error){
             logger.error(error)
-            logger.info(`post url = ${url}, failure!`)
+            logger.info(`${config.method} url = ${url}, failure!`)
             return
         }
         logger.info("res = " + JSON.stringify(body))
         if (res.statusCode==200){
-            logger.info(`post url = ${url}, successes!`)
+            logger.info(`${config.method} url = ${url}, successes!`)
         }
     }).on('error', function(err) {
         logger.error(err);
@@ -34,3 +38,4 @@ try {
 }catch (e){
     logger.error(e)
 }
+

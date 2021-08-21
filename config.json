@@ -1,18 +1,7 @@
 {
-  "post_data": {
-    "status":"success",
-    "code":"1000",
-    "message":"执行成功",
-    "data":
-    {
-      "ip":"192.168.18.188",
-      "devOnlyId":"test123",
-      "score":"62",
-      "clientTime ":"2019-12-11 18:2:39",
-      "deviceType":"0",
-      "vmClientIp":"null"
-    }
-  },
-  "server_addr": "http://192.168.128.155:10092/api/v1/setRiskValue",
-  "service_config": "http://192.168.128.155:3001/sdp_score_file"
+
+  "url": "http://req.ajedu.com/psp/psp.asp?act=cmjc&username=test001&random=1231&signature=967a5f6098b8faa3bd13702c364a7d01",
+  "method": "GET",
+  "custom": {}
+
 }
